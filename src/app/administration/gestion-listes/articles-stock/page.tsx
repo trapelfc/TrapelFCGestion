@@ -1,6 +1,18 @@
 
 'use client';
 
+import { ARTICLE_DEFINITIONS_STORAGE_KEY, PACK_COMPOSITIONS_STORAGE_KEY } from './page-constants';
+import { GLOBAL_STOCK_STORAGE_KEY } from '@/constants/stock-constants'; 
+import React from 'react';
+
+export default function Page() {
+  return (
+    <div>
+      Page Articles Stock
+    </div>
+  );
+}
+
 import Link from 'next/link';
 import { useState, useEffect, useCallback } from 'react'; // Added useCallback
 import { Button } from '@/components/ui/button';
