@@ -47,10 +47,6 @@ export interface EquipementItem {
   standardItemDesignatedSection?: 'equipement' | 'nourriture' | 'sportif';
 }
 
-export const ARTICLE_DEFINITIONS_STORAGE_KEY = 'TRAPEL_FC_ARTICLE_DEFINITIONS_DATA';
-const PACK_COMPOSITIONS_STORAGE_KEY = 'TRAPEL_FC_PACK_COMPOSITIONS_DATA'; 
-// GLOBAL_STOCK_STORAGE_KEY est importé depuis stock-constants
-
 const getDynamicSizesOrLocations = (category: ItemCategoryChoice | undefined): readonly string[] => {
     if (category === 'apparel') return APPAREL_SIZES;
     if (category === 'socks') return SOCK_SIZES;
