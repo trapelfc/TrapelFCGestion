@@ -39,7 +39,9 @@ import { ArrowLeft, Trash2, Edit3 } from 'lucide-react'; // PlusCircle retiré
 import { format, parseISO } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import type { EquipementItem as ArticleDefinition } from '@/app/administration/gestion-listes/articles-stock/page';
-import { getStoredArticleDefinitions, ARTICLE_DEFINITIONS_STORAGE_KEY } from '@/app/administration/gestion-listes/articles-stock/page';
+import { getStoredArticleDefinitions } from '@/app/administration/gestion-listes/articles-stock/page';
+import { ARTICLE_DEFINITIONS_STORAGE_KEY } from '@/app/administration/gestion-listes/articles-stock/page-constants';
+
 
 export interface EquipementItem {
   id: string; 
