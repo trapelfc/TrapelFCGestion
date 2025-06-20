@@ -104,3 +104,8 @@ export const saveAnnexeEventsToStorage = (events: AnnexeEvent[]) => {
   window.dispatchEvent(new StorageEvent('storage', { key: ANNEXE_EVENTS_STORAGE_KEY }));
 };
 
+export {
+  ANNEXE_DEFINITIONS_STORAGE_KEY,
+  ANNEXE_EVENTS_STORAGE_KEY
+};
+
