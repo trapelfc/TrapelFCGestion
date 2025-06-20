@@ -47,26 +47,6 @@ export interface EquipementItem {
   standardItemDesignatedSection?: 'equipement' | 'nourriture' | 'sportif';
 }
 
-const getDynamicSizesOrLocations = (category: ItemCategoryChoice | undefined): readonly string[] => {
-    if (category === 'apparel') return APPAREL_SIZES;
-    if (category === 'socks') return SOCK_SIZES;
-    if (category === 'food') return FOOD_LOCATIONS;
-    if (category === 'sportif') return SPORTIF_LOCATIONS;
-    return [];
-};
-
-export const getStoredArticleDefinitions = (): EquipementItem[] => {
-  if (typeof window === 'undefined') {
-    return [...INITIAL_STOCK_EQUIPEMENTS].map(def => ({
-      id: def.id || crypto.randomUUID(),
-      name: def.name,
-      itemCategory: def.itemCategory,
-      hasSizeVariants: def.hasSizeVariants,
-      availableSizes: def.availableSizes || getDynamicSizesOrLocations(def.itemCategory),
-      supplier: def.supplier,
-      standardItemDesignatedSection: def.standardItemDesignatedSection,
-    })).sort((a, b) => a.name.localeCompare(b.name));
-  }
   const stored = localStorage.getItem(ARTICLE_DEFINITIONS_STORAGE_KEY);
   if (stored) {
     try {
@@ -94,12 +74,7 @@ export const getStoredArticleDefinitions = (): EquipementItem[] => {
   return initialDefinitions;
 };
 
-export const saveStoredArticleDefinitions = (definitions: EquipementItem[]) => {
-  if (typeof window === 'undefined') return;
-  localStorage.setItem(ARTICLE_DEFINITIONS_STORAGE_KEY, JSON.stringify(definitions));
-  window.dispatchEvent(new StorageEvent('storage', { key: ARTICLE_DEFINITIONS_STORAGE_KEY }));
-};
-
+import { getStoredArticleDefinitions, saveStoredArticleDefinitions } from './page-storage';
 
 export default function ArticlesStockPage() {
   const [articleDefinitions, setArticleDefinitions] = useState<EquipementItem[]>([]);
